@@ -34,7 +34,7 @@ inline bool compare(const subgr_res & a, const subgr_res & b)
 std::string int_to_str(const int & i);
 
 void
-pretty_output(const bool textout, std::unordered_map < graphcode64, uint64* > & res_graphs,
+pretty_output(const bool textout, boost::unordered_map < graphcode64, uint64* > & res_graphs,
               short G_N, unsigned short num_v_colors, unsigned short num_e_colors, 
               bool directed, uint64* count_subgr, int num_r_nets, std::ofstream & outfile);
 

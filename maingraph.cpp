@@ -38,16 +38,16 @@ bool read_graph(maingraph & maing, string filename, bool directed,
     maing.directed = directed;
     unsigned short color1 = NO_COLOR, color2 = NO_COLOR, color3 = NO_COLOR, 
                    edge_color = NO_COLOR, color_u = NO_COLOR, color_v = NO_COLOR;
-    unsigned short edge_color_limit = 100, vertex_color_limit = 100;
+    unsigned short edge_color_limit = 100, vertex_color_limit = 128;
     unsigned short curr_colors = 0; // number of colors in the current line
     if (has_vertex_colors){
         switch (G_N){
             case 3: 
-            case 4: vertex_color_limit = 100; break;
-            case 5: vertex_color_limit = 100; break;
-            case 6: vertex_color_limit = 100; break;
-            case 7: vertex_color_limit = 100; break;
-            case 8: vertex_color_limit = 100; break;
+            case 4: vertex_color_limit = 128; break;
+            case 5: vertex_color_limit = 128; break;
+            case 6: vertex_color_limit = 128; break;
+            case 7: vertex_color_limit = 128; break;
+            case 8: vertex_color_limit = 128; break;
         }
     }
     if (has_edge_colors){
@@ -376,7 +376,7 @@ uint64 est_tree_size(const maingraph & g, long* v_extension, uint64 TREESMPLS,
 // Samples / Enumerates the graph returns results in result_graphs, and the time directly.
 double sampling(const maingraph & maing, long* v_extension, short G_N, 
                 bool fullenumeration, const double* prob, const uint64 equiv100p,
-                const int & perc_number, std::unordered_map < graphcode64, uint64 > & result_graphs,
+                const int & perc_number, boost::unordered_map < graphcode64, uint64 > & result_graphs,
                 uint64 & count_subgr,
                 randlib::rand &rand, bool gen_dumpfile, vector<subgraph>& subgraphdump)
 {

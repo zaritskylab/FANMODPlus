@@ -45,7 +45,7 @@ const short INDEG = 0;
 const short OUDEG = 1;
 const vertex NILLVERTEX = 0xFFFFFFFFUL;
 const edge NILLEDGE = 0xFFFFFFFFFFFFFFFFULL;
-const short G_N_MAX = 8;
+const short G_N_MAX = 19;
 
 inline edge new_edge(vertex u, vertex v) { return uint64(u) << 32 | uint64(v); }
 
@@ -191,6 +191,7 @@ inline void del_neighbour(maingraph & maing, const vertex source, const vertex o
 }
 
 #include "EdgeContainer.hpp"
+#include <boost/unordered_map.hpp>
 
 
 // Maingraph functions:
@@ -206,7 +207,7 @@ uint64 est_tree_size(const maingraph & g, long* v_extension,
 double sampling(const maingraph & maing, long* v_extension, short G_N, 
                 bool fullenumeration, const double* prob,
                 const uint64 equiv100p, const int & perc_number,  
-                std::unordered_map < graphcode64, uint64 > & result_graphs,
+                boost::unordered_map < graphcode64, uint64 > & result_graphs,
                 uint64 & count_subgr, randlib::rand &rand, 
                 bool gen_dumpfile, vector<subgraph>& subgraphdump);
                 

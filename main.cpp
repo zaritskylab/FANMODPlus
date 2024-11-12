@@ -26,10 +26,6 @@
 
 namespace po = boost::program_options;
 
-char num_to_lett[] = {'0','1','2','3','4','5','6','7',
-                           '8','9','A','B','C','D','E','F',
-                           '#','#','#','#','#','#','#','#',}; //last line for safety only
-
 uint64 calc_expected_samples(double ntrees, const short & G_N, const double *prob)
 {
     for (int i = 0; i != G_N; ++i)
@@ -37,6 +33,17 @@ uint64 calc_expected_samples(double ntrees, const short & G_N, const double *pro
    	    ntrees *= prob[i];
 	}
     return (uint64)(ntrees+0.5);
+}
+
+#define PBSTR "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+#define PBWIDTH 60
+
+void printProgress(double percentage) {
+    int val = (int)(percentage * 100);
+    int lpad = (int)(percentage * PBWIDTH);
+    int rpad = PBWIDTH - lpad;
+    printf("\r%3d%% [%.*s%*s]", val, lpad, PBSTR, rpad, "");
+    fflush(stdout);
 }
 
 int main(int argc, char** argv){
@@ -181,9 +188,9 @@ int main(int argc, char** argv){
     // Main enumeration / sampling loop
     int total_num_nets = num_r_nets + 1; // We sample num_r_nets and the original graph
     // In this hashmap, the intermediate result is stored before entered into the result - hashmap.
-    std::unordered_map < graphcode64, uint64 > inter_result;
+    boost::unordered_map < graphcode64, uint64 > inter_result;
     // In this hashmap, the results of the sampling and the randomization are stored.
-    std::unordered_map < graphcode64, uint64* > result_graphs;
+    boost::unordered_map < graphcode64, uint64* > result_graphs;
     uint64 *count_subgr = new uint64[total_num_nets];
     uint64 total_subgr = 0;
     double sampling_time = 0.0, random_time = 0.0;
@@ -230,7 +237,7 @@ int main(int argc, char** argv){
                readHashCode(g, iter->gc);
                for (short i = 0; i != G_N; ++i) {
                    for (int j = 0; j != G_N; ++j) {
-                       dumpfile << num_to_lett[get_element(g,i,j)];
+                       dumpfile << '|' << get_element(g, i, j) << '|';
                    }
                }
                for (short i = 0; i != G_N; ++i) {
@@ -243,10 +250,12 @@ int main(int argc, char** argv){
       }
 
       if (nets_ctr == 0){
-        std::cout << count_subgr[0] << " subgraphs were "
-               << (fullenumeration ? "enumerated" : "sampled")
-               << " in the original network.";
+          std::cout << count_subgr[0] << " subgraphs were "
+              << (fullenumeration ? "enumerated" : "sampled")
+              << " in the original network.\n" << std::flush;
       }
+
+      printProgress((double)nets_ctr / (double)total_num_nets);
 
       // Set the perc_number according to how long the maingraph took.
       if (nets_ctr == 0) {
@@ -265,7 +274,7 @@ int main(int argc, char** argv){
       }
 
        // Write results into result_graphs-hashmap
-       for (std::unordered_map < graphcode64, uint64 >::const_iterator iter = inter_result.begin();
+       for (boost::unordered_map < graphcode64, uint64 >::const_iterator iter = inter_result.begin();
 	        iter !=inter_result.end(); ++iter){
            if (result_graphs.find(iter->first) == result_graphs.end()){
                // create the array at the graph's hashmap position.
@@ -368,7 +377,7 @@ int main(int argc, char** argv){
     outfile.close();
 
     // Free Memory of result storage
-    for (std::unordered_map < graphcode64, uint64* >::const_iterator iter = result_graphs.begin();
+    for (boost::unordered_map < graphcode64, uint64* >::const_iterator iter = result_graphs.begin();
          iter != result_graphs.end(); ++iter){
         delete[] iter->second;
     }

@@ -41,10 +41,6 @@ int num_digits(graphcode64 i)
     return ret;
 }
 
-char numberstoletters[] = {'0','1','2','3','4','5','6','7',
-                           '8','9','A','B','C','D','E','F', 
-                           '#','#','#','#','#','#','#','#',}; //last line for safety only
-
 void leda_format_output(const graph64& g, std::ofstream& outfile) {
     //#header section
     outfile << "#+leda format" << endl;
@@ -114,7 +110,7 @@ void leda_format_output(const graph64& g, std::ofstream& outfile) {
 }
 
 void
-pretty_output(const bool textout, std::unordered_map < graphcode64, uint64* > & res_graphs,
+pretty_output(const bool textout, boost::unordered_map < graphcode64, uint64* > & res_graphs,
               short G_N, unsigned short num_v_colors, unsigned short num_e_colors,
               bool directed, uint64* count_subgr, int num_r_nets, std::ofstream & outfile)
 {
@@ -125,7 +121,7 @@ pretty_output(const bool textout, std::unordered_map < graphcode64, uint64* > & 
     graphcode64 max_ID = 0; //For the result table: max_ID has to fit in first column
 
     int idx = 0;
-    for (std::unordered_map < graphcode64, uint64* >::const_iterator iter =
+    for (boost::unordered_map < graphcode64, uint64* >::const_iterator iter =
 	 res_graphs.begin(); iter != res_graphs.end(); ++iter) {
 		gr.id = iter->first;
         // Get the largest ID
@@ -232,7 +228,7 @@ pretty_output(const bool textout, std::unordered_map < graphcode64, uint64* > & 
                     outfile << setw(id_width+1) << ' ';
                 
     			for (int j = 0; j != G_N; ++j) { // give one line of the matrix
-        			outfile << numberstoletters[get_element(g,i,j)];
+        			outfile << get_element(g,i,j);
     			}
     			outfile << endl;
     		}

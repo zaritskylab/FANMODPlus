@@ -9,6 +9,8 @@ static const uint64 TWO_V_BIT = 0x01UL;
 static const uint64 THR_V_BIT = 0x02UL;
 static const uint64 FOU_V_BIT = 0x03UL;
 static const uint64 FIV_V_BIT = 0x04UL;
+static const uint64 SIX_V_BIT = 0x05UL;
+static const uint64 SEV_V_BIT = 0x06UL;
 static const uint64 V_BIT_MSK = 0x07UL;
 static const uint64 ONE_E_BIT = 0x08UL;
 static const uint64 TWO_E_BIT = 0x10UL;
@@ -35,8 +37,10 @@ void init_graph(graph64 &g, short size, unsigned short num_vcolors,
 	if (num_vcolors > 4)   {g.num_vertex_bits = 3; g.codestamp = THR_V_BIT; }
 	if (num_vcolors > 8)   {g.num_vertex_bits = 4; g.codestamp = FOU_V_BIT; }
 	if (num_vcolors > 15)  {g.num_vertex_bits = 5; g.codestamp = FIV_V_BIT; }
+	if (num_vcolors > 32) { g.num_vertex_bits = 6; g.codestamp = SIX_V_BIT; }
+	if (num_vcolors > 64) { g.num_vertex_bits = 7; g.codestamp = SEV_V_BIT; }
 	   
-	if (num_ecolors ==1)   {g.num_edge_bits = 1; g.codestamp |= ONE_E_BIT; }    
+	if (num_ecolors ==1)   {g.num_edge_bits = 1; g.codestamp |= ONE_E_BIT; }
 	if (num_ecolors > 1)   {g.num_edge_bits = 2; g.codestamp |= TWO_E_BIT; }
 	if (num_ecolors > 3)   {g.num_edge_bits = 3; g.codestamp |= THR_E_BIT; }	
    
@@ -180,6 +184,8 @@ void readHashCode(graph64 &g, graphcode64 gc) {
             case THR_V_BIT : vbits = 3; vmsk =  7; break;                        
             case FOU_V_BIT : vbits = 4; vmsk = 15; break;
 			case FIV_V_BIT: vbits = 5; vmsk = 31; break;
+			case SIX_V_BIT: vbits = 6; vmsk = 63; break;
+			case SEV_V_BIT: vbits = 7; vmsk = 127; break;
      }
      switch ((gc & E_BIT_MSK).convert_to<uint64>()) {
             case ONE_E_BIT : ebits = 1; emsk = 1; break;
