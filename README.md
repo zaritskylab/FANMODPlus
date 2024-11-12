@@ -15,14 +15,17 @@ cmake .
 cmake --build .
 
 # Linux using Docker
-docker build -t fanmod_plus_build/fanmod_plus_build:0.1 .
-docker run -it --rm --name=fanmod_plus --mount type=bind,source=${PWD},target="/src" fanmod_plus_build/fanmod_plus_build:0.1 bash
+
+    docker build -t fanmod_plus_build/fanmod_plus_build:0.1 .
+
+    docker run -it --rm --name=fanmod_plus --mount type=bind,source=${PWD},target="/src" fanmod_plus_build/fanmod_plus_build:0.1 bash
 
 inside the container -
-cd src
-mkdir build && cd build
-cmake ..
-make
+
+    cd src
+    mkdir build && cd build
+    cmake ..
+    make
 
 ---> The binary should be created under the build folder (LocalFANMOD)
 Please note that the minmum required version of glibc is 2.27.
