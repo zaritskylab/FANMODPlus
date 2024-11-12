@@ -11,6 +11,7 @@ Fork of the fanmod tool that supports command line execution with cross-platform
 
 # Linux
 cmake .
+
 cmake --build .
 
 # Linux using Docker
