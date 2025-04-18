@@ -42,20 +42,20 @@ https://learn.microsoft.com/en-us/cpp/build/cmake-projects-in-visual-studio?view
 
 # Flags
 
--i <path to input graph file>
+    -i <path to input graph file>
 
-Format of the input file should be:
-<left node id> <right node id> <left node color> <right node color>
+    Format of the input file should be:
+    <left node id> <right node id> <left node color> <right node color>
 
--o <path to output file>
+    -o <path to output file>
 
--r <number of null graphs iterations>
+    -r <number of null graphs iterations>
 
--s <size of motif>
+    -s <size of motif>
 
-For instance, 3 is 3-nodes.
+    For instance, 3 is 3-nodes.
 
---colored_vertcies <colored vertices>
+    -colored_vertcies <colored vertices>
 
 # Output file format
 The initial lines of the file contains statistical information
