@@ -70,7 +70,7 @@ For each motif the output constains information on each candidate subgraph:
     Mean-Freq: the mean frequencies of the null graphs
     Standard-Dev: the std frequencies of the null graphs
     Z-Score: (Frequency-Mean-Freq)/Standard-Dev
-    p-value: how many times the number of instances was higher than in the null model, divides by the the number of itereations.
+    p-value: how many times the number of instances is higher than in the null model, divided by the the number of iterations.
 
     -------------------------------------
     adjacency matrix with color encoding (not encoded well with more than 9 colors)
