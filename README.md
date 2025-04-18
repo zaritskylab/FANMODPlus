@@ -60,7 +60,8 @@ For instance, 3 is 3-nodes.
 # Output file format
 The initial lines of the file contains statistical information
 
-After that for each motif the out constains information on each candidate subgraph:
+For each motif the output constains information on each candidate subgraph:
+
     ID,Frequency,Count,Mean-Freq,Standard-Dev,Z-Score,p-Value
 
     ID: the canonical unique represenation of the subgraph
