@@ -1,7 +1,16 @@
-# fandmod+
-Fork of the fanmod tool that supports command line execution with cross-platform build process. 
+# FANMOD+
+FANMOD+ is a tool that based on the original FANMOD (Fast Network Motif Detection) tool - a software tool used for identifying and analyzing network motifs in complex networks. Network motifs are small, recurring patterns or subgraphs that occur more frequently in real-world networks than would be expected in random networks. They are important for understanding the structural and functional building blocks of complex systems, such as biological, social, or technological networks. (Sebastian Wernicke, Florian Rasche, FANMOD: a tool for fast network motif detection, Bioinformatics, Volume 22, Issue 9, May 2006, Pages 1152–1153, https://doi.org/10.1093/bioinformatics/btl038)
+
+FANMOD+ is similiar (fork from the fanmod repository) in functionility to FANMOD but extend to support: 
+(1) command line execution with cross-platform build process. 
+(2) more nodes colors up to 128 and larger motifs - supporting the analysis of modern spatial multiplex single cell omics data.
+(3) output in LEDA format to support loading the subgraphs in python using networkx lib (https://www.algorithmic-solutions.info/leda_guide/graphs/leda_native_graph_fileformat.html)
+
+# Why not using the original FANMOD tool
+If you need to extract motifs in a graph with a high number of node colors (higher than 15), then the original FANMOD tool implementation will hit his limit.
+
+# The core change
 FANMOD+ increases the space (i.e., number of bits) for the canonical representation from 64-bit fixed allocation to 128-bit dynamic allocation (i.e., physical memory allocation extended when used) (Schäling, 2011). 
-FANMOD+ subgraph canonical representation enables the encoding of more colors and larger motifs, supporting the analysis of modern spatial multiplex single cell omics data.
 
 The fanmod output, input and options are covering only the use case of CISM method (Zamir et al. 2025).
 
