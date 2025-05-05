@@ -1,13 +1,13 @@
 # FANMOD+
-FANMOD+ is a tool that based on the original FANMOD (Fast Network Motif Detection) tool - a software tool used for identifying and analyzing network motifs in complex networks. Network motifs are small, recurring patterns or subgraphs that occur more frequently in real-world networks than would be expected in random networks. They are important for understanding the structural and functional building blocks of complex systems, such as biological, social, or technological networks. (Sebastian Wernicke, Florian Rasche, FANMOD: a tool for fast network motif detection, Bioinformatics, Volume 22, Issue 9, May 2006, Pages 1152–1153, https://doi.org/10.1093/bioinformatics/btl038)
+FANMOD+ is a tool that is based on the original FANMOD (Fast Network Motif Detection) tool - a software tool used for identifying and analyzing network motifs in complex networks. Network motifs are small, recurring patterns or subgraphs that occur more frequently in real-world networks than would be expected in random networks. They are important for understanding the structural and functional building blocks of complex systems, such as biological, social, or technological networks. (Sebastian Wernicke, Florian Rasche, FANMOD: a tool for fast network motif detection, Bioinformatics, Volume 22, Issue 9, May 2006, Pages 1152–1153, https://doi.org/10.1093/bioinformatics/btl038)
 
-FANMOD+ is similiar (fork from the fanmod repository) in functionility to FANMOD but extend to support: 
+FANMOD+ is similar (fork from the fanmod repository) in functionality to FANMOD but extends to support: 
 (1) command line execution with cross-platform build process. 
-(2) more nodes colors up to 128 and larger motifs - supporting the analysis of modern spatial multiplex single cell omics data.
+(2) more node colors up to 128 and larger motifs - supporting the analysis of modern spatial multiplex single cell omics data.
 (3) output in LEDA format to support loading the subgraphs in python using networkx lib (https://www.algorithmic-solutions.info/leda_guide/graphs/leda_native_graph_fileformat.html)
 
-# Why not using the original FANMOD tool
-If you need to extract motifs in a graph with a high number of node colors (higher than 15), then the original FANMOD tool implementation will hit his limit.
+# Why not use the original FANMOD tool
+If you need to extract motifs in a graph with a high number of node colors (more than 15), the original FANMOD tool implementation will reach its limit.
 
 # The core change
 FANMOD+ increases the space (i.e., number of bits) for the canonical representation from 64-bit fixed allocation to 128-bit dynamic allocation (i.e., physical memory allocation extended when used) (Schäling, 2011). 
@@ -41,8 +41,8 @@ inside the container -
     make
 
 ---> The binary should be created under the build folder (LocalFANMOD)
-Please note that the minmum required version of glibc is 2.27.
-The glibc version could checked with "ldd --version" command.
+Please note that the minimum required version of glibc is 2.27.
+The glibc version could be checked with "ldd --version" command.
 
 
 # Windows
@@ -69,11 +69,11 @@ https://learn.microsoft.com/en-us/cpp/build/cmake-projects-in-visual-studio?view
 # Output file format
 The initial lines of the file contains statistical information
 
-For each motif the output constains information on each candidate subgraph:
+For each motif the output contains information on each candidate subgraph:
 
     ID,Frequency,Count,Mean-Freq,Standard-Dev,Z-Score,p-Value
 
-    ID: the canonical unique represenation of the subgraph
+    ID: the canonical unique representation of the subgraph
     Frequency: the number of subgraph instances / total number of subgraphs
     Count: the number of subgraph instances
     Mean-Freq: the mean frequencies of the null graphs
