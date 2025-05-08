@@ -12,7 +12,7 @@ If you need to extract motifs in a graph with a high number of node colors (more
 # The core change
 FANMOD+ increases the space (i.e., number of bits) for the canonical representation from 64-bit fixed allocation to 128-bit dynamic allocation (i.e., physical memory allocation extended when used) (Schäling, 2011). 
 
-The fanmod output, input and options are covering only the use case of CISM method (Zamir et al. 2025).
+The FANMODPlus output, input and options are covering only the use case of CISM method (Zamir et al. 2025).
 
 # Changes
 1. Removing GUI wx dependencies
@@ -107,7 +107,7 @@ For each motif the output contains information on each candidate subgraph:
 
 * The original algorithm was developed by S. Wernicke and F. Rasche
     * See `doc/resources/*.pdf` for more information.
-    * The original source of that implementation was: http://theinf1.informatik.uni-jena.de/motifs/
+    * The original source of that implementation was: http://theinf1.informatik.uni-jena.de/motifs/ (no longer available)
 
 * Command line output modifications by Sebastian Bücker
     * See [this link](https://github.com/gabbage/fanmod-cmd);
