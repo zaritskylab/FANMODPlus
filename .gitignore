@@ -2,4 +2,5 @@
 fanmod_cmd
 .vs
 out
-/build
+build
+boost_*

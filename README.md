@@ -21,36 +21,48 @@ The fanmod output, input and options are covering only the use case of CISM meth
 
 
 # Build & Run
+## Prerequisites
+
+Before building FANMOD+, ensure you have the following installed:
+
+*   A C++ compiler (e.g., g++) with C++17 support
+*   CMake (version 3.22 or later)
+*   Git (for cloning the repository)
 
 # Linux
-cmake .
+```bash
+mkdir build && cd build
+cmake ..
+make
+```
 
-cmake --build .
+For more detailed instructions, especially for building with a local Boost library, please see the [Linux Compilation Guide](Compile.md)
 
 # Linux using Docker
-
-    docker build -t fanmod_plus_build/fanmod_plus_build:0.1 .
-
-    docker run -it --rm --name=fanmod_plus --mount type=bind,source=${PWD},target="/src" fanmod_plus_build/fanmod_plus_build:0.1 bash
+```bash
+docker build -t fanmod_plus_build/fanmod_plus_build:0.1 .
+docker run -it --rm --name=fanmod_plus --mount type=bind,source=${PWD},target="/src" fanmod_plus_build/fanmod_plus_build:0.1 bash
+```
 
 inside the container -
-
+```bash
     cd src
     mkdir build && cd build
     cmake ..
-    make
+    make 
+```
+> _The binary should be created under the build folder (LocalFANMOD)_
 
----> The binary should be created under the build folder (LocalFANMOD)
-Please note that the minimum required version of glibc is 2.27.
-The glibc version could be checked with "ldd --version" command.
+**Note:** The minimum required version of glibc is 2.27. You can check your glibc version with `ldd --version`.
 
 
 # Windows
+
 Compile with visual studio
 https://learn.microsoft.com/en-us/cpp/build/cmake-projects-in-visual-studio?view=msvc-170
 
 # Flags
-
+```bash
     -i <path to input graph file>
 
     Format of the input file should be:
@@ -65,7 +77,7 @@ https://learn.microsoft.com/en-us/cpp/build/cmake-projects-in-visual-studio?view
     For instance, 3 is 3-nodes.
 
     -colored_vertcies <colored vertices>
-
+```
 # Output file format
 The initial lines of the file contains statistical information
 
