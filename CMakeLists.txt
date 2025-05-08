@@ -9,6 +9,9 @@ endif()
 
 project ("LocalFANMOD")
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
 add_compile_definitions(_UNICODE)
 add_compile_definitions(_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS _CRT_SECURE_NO_WARNINGS)
 add_compile_definitions(_WIN64)
