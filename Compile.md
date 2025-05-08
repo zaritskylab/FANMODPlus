@@ -4,7 +4,7 @@ This guide details the steps to compile the FANMODPlus project on a Linux system
 
 ## 1. Prerequisites
 
-Before you begin, ensure you have the following system-wide packages installed. You might need `sudo` for this initial setup if they are not already present.
+Before you begin, ensure you have the following system-wide packages installed. You might need `sudo` for this initial setup if they are not already present (You most likely have these prerequisites already installed).
 
 *   **Build Essentials:** A C++ compiler (like g++), make, etc.
 *   **CMake:** Version 3.22 or newer. Check with `cmake --version`.
