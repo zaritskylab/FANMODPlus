@@ -62,7 +62,7 @@ Compile with visual studio
 https://learn.microsoft.com/en-us/cpp/build/cmake-projects-in-visual-studio?view=msvc-170
 
 # Flags
-
+```bash
     -i <path to input graph file>
 
     Format of the input file should be:
@@ -77,7 +77,7 @@ https://learn.microsoft.com/en-us/cpp/build/cmake-projects-in-visual-studio?view
     For instance, 3 is 3-nodes.
 
     -colored_vertcies <colored vertices>
-
+```
 # Output file format
 The initial lines of the file contains statistical information
 
