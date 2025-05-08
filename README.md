@@ -27,6 +27,7 @@ Before building FANMOD+, ensure you have the following installed:
 
 *   A C++ compiler (e.g., g++) with C++17 support
 *   CMake (version 3.22 or later)
+*   Boost (version 1.81.0 or later)
 *   Git (for cloning the repository)
 
 # Linux
